@@ -15,10 +15,10 @@ import requests
 
 @lab3.route('/number/')
 def no_number():
-    return "Ошибка 400. Не передан парметр", 400
+    return "Не передан парметр", 400
 
 
-@lab3.route('/number/<int:param>', methods=['GET', 'POST'])
+@lab3.route('/number/<int:param>', methods=['GET'])
 def get_number(param):    
     # Генерируем рандомное число от 0 до 1, умножаем на параметр и возвращаем в формате JSON
     random_number = random.random()    
@@ -39,28 +39,32 @@ def post_number():
         return jsonify({'error': 'Поле jsonParam отсутствует'}), 400    
 
     random_number = random.random()
+
+    # Умножаем рандомное число на значение из jsonParam
+    multiplied_result = random_number * json_param
+
     operation = random.choice(['+', '-', '*', '/'])
     
-    # Выполняем выбранную операцию между случайным числом и значением jsonParam
+    # Выполняем выбранную операцию
     if operation == '+':
-        result = random_number + json_param
+        result = multiplied_result + json_param
     elif operation == '-':
-        result = random_number - json_param
+        result = multiplied_result - json_param
     elif operation == '*':
-        result = random_number * json_param
+        result = multiplied_result * json_param
     elif operation == '/':
-        # Если операция деления и jsonParam равен 0, возвращаем None (деление на ноль невозможно)
-        result = random_number / json_param if json_param != 0 else None
+        # Проверяем, чтобы не было деления на ноль
+        if json_param == 0:
+            return jsonify({'error': 'Деление на ноль невозможно'}), 400
+        result = multiplied_result / json_param
     
-    # Если результат None, возвращаем ошибку 400
-    if result is None:
-        return jsonify({'error': 'Делить на ноль нельзя'}), 400
-    
+    # Возвращаем результат в формате JSON
     return jsonify({
-        'random_number': random_number,  
-        'jsonParam': json_param,         
-        'operation': operation,         
-        'result': result                
+        'random_number': random_number,
+        'jsonParam': json_param,
+        'operation': operation,
+        'multiplied_result': multiplied_result,
+        'result': result
     })
 
 
@@ -190,9 +194,9 @@ def execute():
 
 # Повторить пункты из радела II, используя curl
     
-# for /f "tokens=*" %a in ('powershell -Command "Get-Random -Minimum 1 -Maximum 10"') do curl -X GET "http://127.0.0.1:5000/number/%a"
+# for /f "tokens=*" %a in ('powershell -Command "Get-Random -Minimum 1 -Maximum 11"') do curl -X GET "http://127.0.0.1:5000/number/%a"
 
-# for /f "tokens=*" %a in ('powershell -Command "Get-Random -Minimum 1 -Maximum 10"') do curl -X POST -H "Content-Type: application/json" -d "{\"jsonParam\": %a}" http://127.0.0.1:5000/number/
+# for /f "tokens=*" %a in ('powershell -Command "Get-Random -Minimum 1 -Maximum 11"') do curl -X POST -H "Content-Type: application/json" -d "{\"jsonParam\": %a}" http://127.0.0.1:5000/number/
 
 # curl -X DELETE "http://127.0.0.1:5000/number/"
 

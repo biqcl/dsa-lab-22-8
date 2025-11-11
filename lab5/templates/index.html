@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Лабораторная работа №5</h1>
+<h2 style="color: #667eea;">Разработка механизмов аутентификации и авторизации для WEB-приложений на Flask</h2>
+
+<div style="margin: 30px 0;">
+    <p><strong>Добро пожаловать, {{ user.name }}!</strong></p>
+    <p>Email: {{ user.email }}</p>
+</div>
+
+<div style="background-color: #f8f9fa; padding: 15px; border-radius: 12px; margin: 30px 0; border-left: 5px solid #667eea;">
+    <h3>Описание лабораторной работы:</h3>
+    <p>Данная лабораторная работа посвящена изучению механизмов авторизации и регистрации 
+    при использовании микрофреймворка Flask. В работе реализованы:</p>
+    <ul>
+        <li>Система регистрации новых пользователей</li>
+        <li>Система аутентификации (входа)</li>
+        <li>Защита маршрутов от неавторизованного доступа</li>
+        <li>Управление пользовательскими сессиями</li>
+        <li>Безопасное хранение паролей</li>
+    </ul>
+</div>
+
+<a href="{{ url_for('logout') }}" class="logout-btn" style="display: inline-block; padding: 14px 35px; background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);">Выход</a>
+{% endblock %}

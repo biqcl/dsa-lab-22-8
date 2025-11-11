@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="text-align: center; margin-bottom: 30px;">
+    <h2 style="color: #2d3436; margin-bottom: 10px; font-size: 2em;">Вход в систему</h2>
+    <p style="color: #636e72; margin-top: 0;">Введите ваши учетные данные</p>
+</div>
+
+{% if error %}
+<div class="error-message">
+    {{ error }}
+</div>
+{% endif %}
+
+<form method="POST" style="max-width: 400px; margin: 0 auto;">
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="{{ request.form.email if request.form }}" required>
+    </div>
+    <div>
+        <label for="password">Пароль:</label>
+        <input type="password" id="password" name="password" required>
+    </div>
+    <div style="text-align: center; margin-top: 30px;">
+        <button type="submit" style="width: 100%;">Вход</button>
+    </div>
+</form>
+
+<div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #dfe6e9;">
+    <p style="color: #636e72; margin: 0;">
+        Нет аккаунта? <a href="{{ url_for('signup') }}">Зарегистрируйтесь</a>
+    </p>
+</div>
+{% endblock %}

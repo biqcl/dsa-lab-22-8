@@ -5,7 +5,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 # Инициализация приложения Flask
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'lab5-secret-key-2024'
+app.config['SECRET_KEY'] = 'lab5-secret-key-2025'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 

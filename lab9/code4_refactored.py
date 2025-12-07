@@ -14,8 +14,8 @@ def calculate_tax(income):
     else:
         return income * TAX_RATE_HIGH
 
-# Пример теста
 if __name__ == "__main__":
-    print(calculate_tax(5000))   # 500
-    print(calculate_tax(15000))  # 2250
-    print(calculate_tax(30000))  # 6000
+    print(calculate_tax(5000))  
+    print(calculate_tax(15000)) 
+    print(calculate_tax(30000))  
+    

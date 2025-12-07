@@ -19,7 +19,6 @@ def process_order(order):
     process_payment()
     send_confirmation()
 
-# Пример теста
 if __name__ == "__main__":
     order_example = {
         "items": [

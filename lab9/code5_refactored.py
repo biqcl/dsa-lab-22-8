@@ -4,10 +4,9 @@ def create_report(employee_data):
     for key, value in employee_data.items():
         print(f"{key.capitalize()}: {value}")
 
-# Пример теста
 if __name__ == "__main__":
     employee = {
-        "name": "Нина Демченко",
+        "name": "Бызова Мария",
         "age": 21,
         "department": "НГТУ",
         "salary": 100000,

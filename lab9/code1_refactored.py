@@ -9,7 +9,6 @@ def send_notification(to, message, service_type):
         print(f"Sending SMS to {to} with message '{message}'...")
         print("SMS sent.")
 
-# Пример теста
 if __name__ == "__main__":
-    send_notification("demchenko.nina2004@gmail.com", "Привет", "email")
-    send_notification("+71234567890", "Привет", "sms")
+    send_notification("m_byzovaa@mail.ru", "Привет", "email")
+    send_notification("+78888888888", "Привет", "sms")
